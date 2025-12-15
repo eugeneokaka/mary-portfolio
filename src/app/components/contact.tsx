@@ -104,7 +104,7 @@ const ContactSection: React.FC = () => {
               </button>
 
               <a
-                href="https://www.linkedin.com/in/your-linkedin"
+                href="http://www.linkedin.com/in/mary-adhiambo"
                 target="_blank"
                 className="flex items-center gap-2 text-teal-700 font-medium hover:underline"
               >
