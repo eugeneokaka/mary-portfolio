@@ -155,7 +155,7 @@ const AboutMeSection: React.FC = () => (
               communication and digital content.
             </p>
             <p>
-              I've worked with the FAO, Kenya's Ministry of Health**, hospitals,
+              I’ve worked with the FAO, Kenya’s Ministry of Health, hospitals,
               and schools, giving me a solid understanding of both patient needs
               and public health systems.
             </p>
@@ -183,7 +183,7 @@ const KeyServicesSection: React.FC = () => {
       Icon: SocialIcon,
       points: [
         "Social media strategy",
-        "Content creation (captions, scripts, posts, infographics) [cite: 67]",
+        "Content creation (captions, scripts, posts, infographics) ",
         "Content calendars",
         "Website copy and updates",
         "Digital storytelling for health programs",
@@ -202,7 +202,7 @@ const KeyServicesSection: React.FC = () => {
         "Treatment and medication explainers",
         "Visual infographics and handouts",
         "Evidence-based materials designed for readability and comprehension",
-        "Compliance with Medical & Religious Dietary Restrictions [cite: 84]",
+        "Compliance with Medical & Religious Dietary Restrictions ",
       ],
     },
     {
@@ -303,6 +303,109 @@ const ChickenLegSample: React.FC = () => (
     </div>
   </div>
 );
+
+const CaseStudyCard = ({
+  title,
+  sections,
+}: {
+  title: string;
+  sections: { heading: string; content: string | string[] }[];
+}) => (
+  <div className="bg-white rounded-2xl shadow-lg p-8 space-y-6">
+    <h3 className="text-2xl font-extrabold text-gray-900">{title}</h3>
+
+    {sections.map((section, idx) => (
+      <div key={idx} className="space-y-2">
+        <h4 className="text-teal-600 font-semibold uppercase tracking-wide text-sm">
+          {section.heading}
+        </h4>
+        {Array.isArray(section.content) ? (
+          <ul className="list-disc list-inside text-gray-700 space-y-1">
+            {section.content.map((item, i) => (
+              <li key={i}>{item}</li>
+            ))}
+          </ul>
+        ) : (
+          <p className="text-gray-700 leading-relaxed">{section.content}</p>
+        )}
+      </div>
+    ))}
+  </div>
+);
+
+const CaseStudiesSection: React.FC = () => {
+  return (
+    <section id="case-studies" className="py-24 bg-gray-50">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-16">
+          <h3 className="text-teal-600 font-bold uppercase tracking-wide">
+            Case Studies
+          </h3>
+          <h2 className="text-3xl font-extrabold text-gray-900 mt-2">
+            Real Work. Real Impact.
+          </h2>
+          <p className="mt-4 text-gray-600 max-w-2xl mx-auto">
+            A snapshot of how thoughtful communication and strategy improve
+            patient understanding, engagement, and outcomes.
+          </p>
+        </div>
+
+        <div className="grid gap-10">
+          {/* CASE STUDY 1 */}
+          <CaseStudyCard
+            title="Case Study 1: Patient-Centred Diabetes Communication"
+            sections={[
+              {
+                heading: "What I Created",
+                content: [
+                  "Edited and simplified discharge notes",
+                  "Rewritten take-home patient reference materials",
+                  "A clear, easy-to-understand diabetes education brochure",
+                  "Improved structure, layout, and tone across all documents",
+                  "Materials aligned with health literacy best practices",
+                ],
+              },
+              {
+                heading: "Outcome",
+                content:
+                  "The hospital gained its first set of patient-centred communication materials. Patients were better able to understand their conditions and follow care instructions at home. Clinical staff reported fewer repeated questions during follow-up visits and an improved overall patient experience.",
+              },
+            ]}
+          />
+
+          {/* CASE STUDY 2 */}
+          <CaseStudyCard
+            title="Case Study 2: Helping a Camera-Shy Nutritionist Reach a Younger Audience"
+            sections={[
+              {
+                heading: "Client",
+                content: "Independent Nutritionist",
+              },
+              {
+                heading: "Focus",
+                content: "Social media content strategy and execution",
+              },
+              {
+                heading: "Platform",
+                content: "TikTok",
+              },
+              {
+                heading: "Context & Challenge",
+                content:
+                  "The client was a qualified nutritionist who wanted to reach a younger audience on TikTok but felt deeply uncomfortable appearing on camera.",
+              },
+              {
+                heading: "Approach",
+                content:
+                  "I developed a content approach that removed the pressure of being on camera while still allowing her personality and expertise to shine. Using Adobe Express, we created a simple avatar paired with her own voice as a voice-over, ensuring the content felt authentic and human. To build consistency and audience retention, I recommended themed content series instead of random posts.",
+              },
+            ]}
+          />
+        </div>
+      </div>
+    </section>
+  );
+};
 
 const SamplesSection: React.FC = () => (
   <section id="samples" className="py-24 bg-white">
@@ -432,6 +535,7 @@ const PortfolioWebsite: React.FC = () => {
         <HeroSection />
         <AboutMeSection />
         <KeyServicesSection />
+        <CaseStudiesSection />
         <SamplesSection />
         <ContactSection />
       </main>
